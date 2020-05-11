@@ -1,0 +1,59 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://StartMenu.gd" type="Script" id=1]
+[ext_resource path="res://Swiss-721-Bold-Condensed-BT.ttf" type="DynamicFontData" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 32
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 24
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 24
+font_data = ExtResource( 2 )
+
+[node name="StartMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+margin_left = 142.0
+margin_top = 120.0
+margin_right = 497.0
+margin_bottom = 239.0
+
+[node name="Title" type="Label" parent="CenterContainer/VBoxContainer"]
+margin_right = 355.0
+margin_bottom = 39.0
+custom_fonts/font = SubResource( 1 )
+text = "Generic Platformer #23186"
+
+[node name="StartGameButton" type="Button" parent="CenterContainer/VBoxContainer"]
+margin_top = 43.0
+margin_right = 355.0
+margin_bottom = 79.0
+custom_fonts/font = SubResource( 2 )
+text = "Start Game"
+
+[node name="QuitGameButton" type="Button" parent="CenterContainer/VBoxContainer"]
+margin_top = 83.0
+margin_right = 355.0
+margin_bottom = 119.0
+custom_fonts/font = SubResource( 3 )
+text = "Quit Game"
+[connection signal="pressed" from="CenterContainer/VBoxContainer/StartGameButton" to="." method="_on_StartGameButton_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/QuitGameButton" to="." method="_on_QuitGameButton_pressed"]
