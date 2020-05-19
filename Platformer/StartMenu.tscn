@@ -1,10 +1,14 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://StartMenu.gd" type="Script" id=1]
 [ext_resource path="res://Swiss-721-Bold-Condensed-BT.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Sprites/Sky.png" type="Texture" id=3]
+[ext_resource path="res://Clouds.gd" type="Script" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=2]
@@ -14,6 +18,24 @@ font_data = ExtResource( 2 )
 [sub_resource type="DynamicFont" id=3]
 size = 24
 font_data = ExtResource( 2 )
+
+[sub_resource type="Shader" id=4]
+code = "shader_type canvas_item;
+
+uniform vec2 direction = vec2(1.0,0.0);
+uniform float speed_scale = 0.05;
+
+void fragment(){
+
+     vec2 move = direction * TIME * speed_scale;
+
+     COLOR = texture(TEXTURE, UV + move);   
+}"
+
+[sub_resource type="ShaderMaterial" id=5]
+shader = SubResource( 4 )
+shader_param/direction = Vector2( 1, 0 )
+shader_param/speed_scale = 0.05
 
 [node name="StartMenu" type="Control"]
 anchor_right = 1.0
@@ -55,5 +77,12 @@ margin_right = 355.0
 margin_bottom = 119.0
 custom_fonts/font = SubResource( 3 )
 text = "Quit Game"
+
+[node name="Clouds" type="Sprite" parent="."]
+material = SubResource( 5 )
+z_index = -5
+texture = ExtResource( 3 )
+centered = false
+script = ExtResource( 4 )
 [connection signal="pressed" from="CenterContainer/VBoxContainer/StartGameButton" to="." method="_on_StartGameButton_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/QuitGameButton" to="." method="_on_QuitGameButton_pressed"]
