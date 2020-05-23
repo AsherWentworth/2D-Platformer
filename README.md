@@ -1,2 +1,2 @@
 # 2D-Platformer
-A game made in Godot
+A 2D platformer game made in Godot, Generic Platformer #23186 is primarily a puzzle game. Not knowing where the exit is, you must find your way through all four levels by cautious and persistent exploration, being careful not to run into the dangerous flying creatures along the way. Use arrow keys to move and jump, and hold the down arrow for a helpful speed boost. No level is impossible, but it can be annoying to start over if you're overzealous in your actions, so think carefully every time.
